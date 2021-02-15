@@ -11,6 +11,11 @@
 int leituraSensor(int pino);
 void iniciaConfiguracao();
 
+// =================== Variáveis/Constantes Globais ====================
+
+long ultimoMillis;
+const int intervalo = 500;
+
 // ========================== Setup ==============================
 
 void setup() {
@@ -20,9 +25,13 @@ void setup() {
 // ========================== Loop ==============================
 
 void loop() {
-  int leSensor = leituraSensor(SENSOR);
-  Serial.println("Valor: " + String(leSensor));
-  delay(500);
+  if (millis() - ultimoMillis > intervalo) {
+    int leSensor = leituraSensor(SENSOR);
+    Serial.println("Valor: " + String(leSensor));
+
+    ultimoMillis = millis();
+  }
+  
 }
 
 // =================== Implementação Funções Aux ====================
