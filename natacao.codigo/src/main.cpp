@@ -6,6 +6,8 @@
 
 #define SENSOR A0
 
+#define BAUD_RATE 9600
+
 // =================== Protótipo Funçõex Aux ====================
 
 int leituraSensor(int pino);
@@ -42,5 +44,5 @@ int leituraSensor(int pino) {
 }
 
 void iniciaConfiguracao() {
-  Serial.begin(9600);
+  Serial.begin(BAUD_RATE);
 }
